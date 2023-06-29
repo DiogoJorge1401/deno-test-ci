@@ -5,7 +5,7 @@ import { sum } from './math.ts';
 describe('math.ts', () => {
   it('should return 3 when passed 1 and 2', () => {
     const actual = sum(1, 2);
-    const expected = 4;
+    const expected = 3;
     assertEquals(actual, expected);
   });
 });
