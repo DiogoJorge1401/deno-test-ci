@@ -1,0 +1,13 @@
+name: ci-deno
+
+on: [push]
+
+jobs:
+  check-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denolang/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: deno test --allow-all
