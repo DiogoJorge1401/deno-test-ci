@@ -1,6 +1,9 @@
 name: ci-deno
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - development
 
 jobs:
   check-app:
