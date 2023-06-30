@@ -1,6 +1,6 @@
 import { assertEquals } from 'https://deno.land/std@0.192.0/testing/asserts.ts';
 import { describe, it } from 'https://deno.land/std@0.192.0/testing/bdd.ts';
-import { Math } from './math.ts';
+import { Math } from './src/math.ts';
 
 describe('Math', () => {
   const math = new Math(1, 2);
