@@ -32,3 +32,5 @@ app.addEventListener('listen', ({ hostname, port, serverType }) => {
 if (import.meta.main) {
   await app.listen({ port: 3000 });
 }
+
+export { app };
