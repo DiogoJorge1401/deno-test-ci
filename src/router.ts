@@ -16,6 +16,12 @@ router
     const responseText = `Sum(${a}, ${b}): ${math.sum()}, Sub(${a}, ${b}): ${math.sub()}`;
     ctx.response.body = responseText;
     ctx.response.status = 200;
+  })
+  .get('/greeting', (ctx) => {
+    const params = ctx.request.url.searchParams;
+    const name = params.get('name') || 'World';
+    ctx.response.body = `Hello, ${name}!`;
+    ctx.response.status = 200;
   });
 
 export { router };

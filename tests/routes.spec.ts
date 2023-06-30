@@ -24,3 +24,17 @@ describe('GET /math', () => {
       .expect(200, 'Sum(10, 5): 15, Sub(10, 5): 5');
   });
 });
+
+describe('GET /greeting', () => {
+  it("should return 200 and get `Hello, World!` when doesn't pass parameters", async () => {
+    const request = await superoak(app);
+
+    await request.get('/greeting').expect(200, 'Hello, World!');
+  });
+
+  it('should return 200 and get `Hello, Deno!` when do pass `Deno` as parameter', async () => {
+    const request = await superoak(app);
+
+    await request.get('/greeting?name=Deno').expect(200, 'Hello, Deno!');
+  });
+});
