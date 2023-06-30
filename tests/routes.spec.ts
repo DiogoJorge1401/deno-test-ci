@@ -1,6 +1,6 @@
 import { describe, it } from 'https://deno.land/std@0.192.0/testing/bdd.ts';
 import { superoak } from 'https://deno.land/x/superoak@4.7.0/mod.ts';
-import { app } from '../src/app.ts';
+import { app } from '../src/main.ts';
 
 describe('GET /', () => {
   it('should return 200 and get `Hello World!`', async () => {
