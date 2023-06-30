@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deno Setup
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - run: deno test -A tests/*
+        run: |
+          curl -fsSL https://deno.land/x/install/install.sh | sh
+          export DENO_INSTALL="/root/.deno"
+          export PATH="$DENO_INSTALL/bin:$PATH"
+      - name: Run tests
+        run: deno test -A tests/*
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
