@@ -5,7 +5,7 @@ const router = new Router();
 
 router
   .get('/', (ctx) => {
-    ctx.response.body = 'Hello World';
+    ctx.response.body = 'Hello World!';
     ctx.response.status = 200;
   })
   .get('/math', (ctx) => {
