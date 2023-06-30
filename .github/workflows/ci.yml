@@ -1,9 +1,14 @@
 name: ci-deno
 
 on:
+  push:
+    branches:
+      - 'development'
+    tags:
+      - 'v*'
   pull_request:
     branches:
-      - development
+      - 'development'
 
 jobs:
   check-app:
