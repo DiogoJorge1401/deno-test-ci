@@ -5,7 +5,7 @@ import { router } from './router.ts';
 
 const app = new Application();
 
-// Logger
+// Logger !
 app.use(logger);
 
 // Response Time
