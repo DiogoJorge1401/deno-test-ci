@@ -29,4 +29,6 @@ app.addEventListener('listen', ({ hostname, port, serverType }) => {
   console.log(bold('  using HTTP server: ' + yellow(serverType)));
 });
 
-await app.listen({ port: 3000 });
+if (import.meta.main) {
+  await app.listen({ port: 3000 });
+}
