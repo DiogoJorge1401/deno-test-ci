@@ -5,6 +5,10 @@ on:
     branches:
       - development
 
+strategy:
+  matrix:
+    deno: [v1.34, v1.33]
+
 jobs:
   check-app:
     runs-on: ubuntu-latest
@@ -12,5 +16,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: ${{ matrix.deno }}
       - run: deno test --allow-all
