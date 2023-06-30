@@ -16,4 +16,4 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ matrix.deno }}
-      - run: deno test --allow-all
+      - run: deno test -A tests/*
