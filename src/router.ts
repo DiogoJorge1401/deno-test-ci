@@ -9,8 +9,12 @@ router
     ctx.response.status = 200;
   })
   .get('/math', (ctx) => {
-    const math = new Math(10, 5);
-    ctx.response.body = `Sum(10, 5): ${math.sum()}, Sub(10, 5): ${math.sub()}`;
+    const params = ctx.request.url.searchParams;
+    const a = Number(params.get('a')) || 0;
+    const b = Number(params.get('b')) || 0;
+    const math = new Math(a, b);
+    const responseText = `Sum(${a}, ${b}): ${math.sum()}, Sub(${a}, ${b}): ${math.sub()}`;
+    ctx.response.body = responseText;
     ctx.response.status = 200;
   });
 
