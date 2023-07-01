@@ -1,4 +1,4 @@
-import { Router } from 'https://deno.land/x/oak@v12.5.0/mod.ts';
+import { Router, httpErrors } from 'https://deno.land/x/oak@v12.5.0/mod.ts';
 import { Math } from './math.ts';
 
 const router = new Router();
@@ -19,8 +19,11 @@ router
   })
   .get('/greeting', (ctx) => {
     const params = ctx.request.url.searchParams;
-    const name = params.get('name') || 'World';
-    ctx.response.body = `Hello, ${name}!`;
+    const name = params.get('name');
+    if (!name) throw new httpErrors.BadRequest('Name is required');
+    ctx.response.body = {
+      message: `Hello ${name}`
+    };
     ctx.response.status = 200;
   });
 
