@@ -1,6 +1,7 @@
 import { describe, it } from 'https://deno.land/std@0.192.0/testing/bdd.ts';
 import { superoak } from 'https://deno.land/x/superoak@4.7.0/mod.ts';
 import { app } from '../src/main.ts';
+import { assertEquals } from 'https://deno.land/std@0.192.0/testing/asserts.ts';
 
 describe('GET /', () => {
   it('should return 200 and get `Hello World!`', async () => {
@@ -26,15 +27,21 @@ describe('GET /math', () => {
 });
 
 describe('GET /greeting', () => {
-  it("should return 200 and get `Hello, World!` when doesn't pass parameters", async () => {
+  it("should return 400 and get `Name is required` when doesn't pass parameters", async () => {
     const request = await superoak(app);
 
-    await request.get('/greeting').expect(200, 'Hello, World!');
+    const response = await request.get('/greeting');
+
+    assertEquals(response.status, 400);
+    assertEquals(response.body.message, 'Name is required');
   });
 
   it('should return 200 and get `Hello, Deno!` when do pass `Deno` as parameter', async () => {
     const request = await superoak(app);
 
-    await request.get('/greeting?name=Deno').expect(200, 'Hello, Deno!');
+    const response = await request.get('/greeting?name=Deno');
+
+    assertEquals(response.status, 200);
+    assertEquals(response.body.message, 'Hello Deno');
   });
 });
