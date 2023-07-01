@@ -1,0 +1,4 @@
+.scannerwork
+coverage
+sonar*
+tsconfig.json
