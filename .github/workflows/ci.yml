@@ -18,7 +18,7 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: 1.x
-      - run: deno test -A tests/*
+      - run: deno task coverage
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
