@@ -20,6 +20,8 @@ jobs:
           deno-version: 1.x
       - name: Run tests and coverage
         run: deno task coverage
+      - name: Get Lcov report
+        run: deno task coverage:lcov
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
