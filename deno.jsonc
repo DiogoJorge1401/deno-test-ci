@@ -2,6 +2,6 @@
   "tasks": {
     "dev": "deno run --watch -A src/server.ts",
     "test": "deno test -A tests/*",
-    "coverage": "deno test -A --coverage=coverage tests/* && deno coverage coverage --lcov --output=coverage/cov_profile.lcov && genhtml coverage/cov_profile.lcov -o coverage/html"
+    "coverage": "deno test -A --coverage=coverage tests/* && deno coverage coverage --lcov --output=coverage/cov_profile.lcov"
   }
 }
