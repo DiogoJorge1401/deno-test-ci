@@ -1,5 +1,4 @@
 .scannerwork
 coverage
 cov_profile
-sonar*
 tsconfig.json
