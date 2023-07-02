@@ -18,15 +18,21 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: 1.x
-      - run: deno task coverage
+      - name: Run tests and coverage
+        run: deno task coverage
+      - name: Get Lcov report
+        run: deno task coverage:lcov
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
         with:
-          # list of Docker images to use as base name for tags
           images: |
             diogojorge1401/deno-test-ci
-          # generate Docker tags based on the following events/attributes
           tags: |
             type=schedule
             type=ref,event=branch
